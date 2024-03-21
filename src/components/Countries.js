@@ -6,6 +6,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import NoResults from "./NoResults";
 import { useDarkMode } from "./DarkModeContext";
+import {Link} from 'react-router-dom';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -26,6 +27,7 @@ const [subRegion,setSubRegion]= useState([])
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
       .then((data) => {
+        console.log('try');
         console.log(data);
         setCountries(data);
         setFilterLoad(false);
@@ -58,7 +60,7 @@ const [subRegion,setSubRegion]= useState([])
     } catch (error) {
       console.log('error in handling input',error);
     }
-    
+ 
   };
   const arrange = () => {
     try {
@@ -169,9 +171,9 @@ const handleSubRegionChange = (e) => {
 };
 
   return (
-    <div style={{ background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }}>
+    <div style={{height:'100vh', background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }}>
    
-      <Header />
+   
       <Search
         entered={entered}
         handleSearchInput={handleSearchInput}
@@ -190,20 +192,69 @@ const handleSubRegionChange = (e) => {
       <div className="container">
         {searched && regionApplied ? (
           filtered.length > 0 ? (
-            filtered.map((country) => <Country key={country.name.common} country={country} isDarkMode={isDarkMode} regionApplied={regionApplied} filterRegional={filterRegional}  />)
+            filtered.map((country) => <Link
+            key={country.name.common}
+            to={`/country/${country.name.common}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Country
+              key={country.name.common}
+              country={country}
+              isDarkMode={isDarkMode}
+              regionApplied={regionApplied}
+              filterRegional={filterRegional}
+            />
+          </Link>
+          )
           ) : (
             <NoResults isDarkMode={isDarkMode} />
           )
         ) : !searched && regionApplied ? (
-          regionFilter.map((country) => <Country key={country.name.common} country={country} isDarkMode={isDarkMode} regionApplied={regionApplied} filterRegional={filterRegional}/>)
+          regionFilter.map((country) => <Link
+          key={country.name.common}
+          to={`/country/${country.name.common}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <Country
+            key={country.name.common}
+            country={country}
+            isDarkMode={isDarkMode}
+            regionApplied={regionApplied}
+            filterRegional={filterRegional}
+          />
+        </Link>)
         ) : searched && !regionApplied ? (
           filtered.length > 0 ? (
-            filtered.map((country) => <Country key={country.name.common} country={country} isDarkMode={isDarkMode} />)
+            filtered.map((country) => <Link
+            key={country.name.common}
+            to={`/country/${country.name.common}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Country
+              key={country.name.common}
+              country={country}
+              isDarkMode={isDarkMode}
+              regionApplied={regionApplied}
+              filterRegional={filterRegional}
+            />
+          </Link>)
           ) : (
             <NoResults isDarkMode={isDarkMode} />
           )
         ) : (
-          countries.map((country) => <Country key={country.name.common} country={country} isDarkMode={isDarkMode} />)
+          countries.map((country) => <Link
+          key={country.name.common}
+          to={`/country/${country.name.common}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <Country
+            key={country.name.common}
+            country={country}
+            isDarkMode={isDarkMode}
+            regionApplied={regionApplied}
+            filterRegional={filterRegional}
+          />
+        </Link>)
         )}
       </div>
     </div>

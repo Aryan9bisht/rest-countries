@@ -104,8 +104,57 @@ option{
   height: 170px;
   border-start-end-radius: 5px;
 }
+.det-county-img {
+  width: 600px;
+  height: 400px;
+  border-start-end-radius: 5px;
+}
+.det-country-name {
+  font-weight: bolder;
+  font-size: xx-large;
+  margin-bottom: 40px;
+}
+.det-country{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.currency{
+  font-size: 15px;
+}
+.lang{
+  margin-top: -5px;
+  font-size: 15px;
+  width: 30vh;
+}
+.native{
+  font-size: 15px;
+  margin-top: 20px;
+}
+.det-population{
+  font-size: 15px;
+  margin-top: 10px;
+}
+.det-sub{
+  font-size: 15px;
+  margin-top: 10px;
+}
+.det-region{
+  font-size: 15px;
+  margin-top: 10px;
+}
+.det-capital{
+  font-size: 15px;
+  margin-top: 10px;
+}
 .country-name > div {
   font-size: small;
+}
+.currency{
+  margin-bottom: 10px;
+}
+.country-det2{
+  margin-top:-65px;
 }
 .country-det{
   margin-left: 40px;
@@ -129,12 +178,73 @@ button{
 
 }
 .sub{
-  margin-top: 5px;
+
   font-size: small;
+}
+.new-page{
+  display: flex;
+  flex-direction: column;
+  margin: 90px;
+}
+.btn{
+  margin-left: -15px;
+}
+.top{
+  margin-bottom: 5px;
+    font-size: 15px;
+}
+.flag{
+  width: 40vw;
+}
+.det-country {
+  margin-top: 20px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc(280px - 20px);
+  /* margin: 30px; */
+  height: 350px;
+  border-radius: 5px;
+  margin-top: 70px;
+  margin-left: -35px;
+}
+.border {
+  /* height: 10vh; */
+  
+  margin-top: 40px;
+  display: flex;
+  width: 60vh;
+  font-size: 15px;
+  align-items: center;
+}
+.root{
+  height: 100vh;
+}
+.border-name {
+  margin-left: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 6vw;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.country-det1{
+  margin-left: 30px;
+  width: 25vw;
 }
 .capital{
   margin-top: 5px;
   font-size: small;
+}
+.back{
+  margin-top: 70px;
+}
+.forDark{
+  background: rgb(33, 45, 55);
+  color: rgb(255, 255, 255);
+  width: 100vw;
+  height: 100vh;
+  margin-top: -90px;
 }
 .moon-icon {
   font-weight: 100; /* Example thin font-weight */
@@ -152,6 +262,16 @@ button{
 .thin-text {
   font-weight: 100; /* Example thin font-weight */
 }
+.back{
+  text-align: center;
+    text-decoration: none;
+    width: 7vw;
+    display: flex;
+    height: 4vh;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
 
 /* For viewport widths greater than or equal to 1440px */
 @media (min-width: 1440px) {
@@ -162,7 +282,8 @@ button{
 }
 
 /* For viewport widths less than 1440px */
-@media (max-width: 375px) {
+@media (max-width: 375px) and (max-height: 932px) {
+
   body {
     width: 100%;
   }
@@ -207,6 +328,7 @@ button{
 
 }
 .container {
+  position: fixed;
   width: 100%;
   height: auto;
   display: -ms-flexbox;
