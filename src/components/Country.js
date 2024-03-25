@@ -1,40 +1,75 @@
-
 import React from "react";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
-const Country = ({ country, isDarkMode,regionApplied }) => {
+const Country = ({ country, isDarkMode, regionApplied }) => {
   return (
-    <Card sx={{  height:320, background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000"  }}>
-    <CardActionArea sx={{ background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }} >
-      <CardMedia
-        component="img"
-  height="160"
-        image={country.flags.png} 
-        alt="green iguana"
-    style={{objectFit:'fill'}}
-      />
-      <CardContent sx={{ background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }}>
-        <Typography gutterBottom variant="h5" component="div">
-        
-        {country.name.common}
-        </Typography>
-      
-        <Typography variant="body2" sx={{ background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }} color="text.secondary">
-          <strong>Population: </strong> {country.population}
-        </Typography>
-        <Typography variant="body2" color="text.secondary"  sx={{ background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }}>
-        <strong>Region: </strong>  {country.region}
-        </Typography>
-        <Typography variant="body2" color="text.secondary"  sx={{ background: isDarkMode ? "rgb(33, 45, 55)" : "#fff", color: isDarkMode ? "#fff" : "#000" }}>
-        <strong>Capital: </strong>  {country.capital}
-        </Typography>
-      </CardContent>
-    </CardActionArea>
-  </Card>
+    <Card
+      sx={{
+        height: 320,
+        background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
+        color: isDarkMode ? "#fff" : "#000",
+      }}
+    >
+      <CardActionArea
+        sx={{
+          background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
+          color: isDarkMode ? "#fff" : "#000",
+        }}
+      >
+        <CardMedia
+          component="img"
+          height="160"
+          image={country.flags.png}
+          alt="green iguana"
+          style={{ objectFit: "fill" }}
+        />
+        <CardContent
+          sx={{
+            background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
+            color: isDarkMode ? "#fff" : "#000",
+          }}
+        >
+          <Typography gutterBottom variant="h5" component="div">
+            {country.name.common}
+          </Typography>
+
+          <Typography
+            variant="body2"
+            sx={{
+              background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
+              color: isDarkMode ? "#fff" : "#000",
+            }}
+            color="text.secondary"
+          >
+            <strong>Population: </strong> {country.population}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
+              color: isDarkMode ? "#fff" : "#000",
+            }}
+          >
+            <strong>Region: </strong> {country.region}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
+              color: isDarkMode ? "#fff" : "#000",
+            }}
+          >
+            <strong>Capital: </strong> {country.capital}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 

@@ -1,8 +1,7 @@
 import { Box } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import Textarea from '@mui/joy/Textarea';
+import Textarea from "@mui/joy/Textarea";
 import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
 import { styled, alpha } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -11,9 +10,6 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import React, { useState } from "react";
 import FormControl from "@mui/material/FormControl";
-import { useDarkMode } from "./DarkModeContext";
-import { useTheme } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -40,25 +36,20 @@ const Search = ({
   handleSubRegionChange,
 }) => {
   const handleChange = (event) => {
-    handleRegionChange(event); // Call handleRegionChange function
-    filterRegional(event); // Call filterRegional function
+    handleRegionChange(event);
+    filterRegional(event);
   };
   const [selectedValue, setSelectedValue] = useState(" ");
 
-  // Handler function to update the selected value when it changes
   const handling = (event) => {
     valSub(event);
     handleSubRegionChange(event);
   };
   const valSub = (event) => {
     setSelectedValue(event.target.value);
-    // Additional logic if needed
   };
-  
 
-  
   return (
-   
     <Box
       sx={{
         width: "92vw",
@@ -77,24 +68,22 @@ const Search = ({
           }}
         >
           {" "}
-         
           <Textarea
             sx={{
-              height:'4.5vh',
+              height: "4.5vh",
               width: "30vw",
               boxShadow: "none",
               background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
               color: isDarkMode ? "#fff" : "#000",
-         paddingTop:'7px'
+              paddingTop: "7px",
             }}
-  color="primary"
-  minRows={2}
-  placeholder="search countrues"
-  size="sm"
-  variant="outlined"
-  onChange={handleSearchInput}
-/>
-
+            color="primary"
+            minRows={2}
+            placeholder="search countrues"
+            size="sm"
+            variant="outlined"
+            onChange={handleSearchInput}
+          />
         </Item>
 
         <Item
@@ -135,15 +124,14 @@ const Search = ({
               height: "auto",
               boxShadow: "none",
               background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
-              color: isDarkMode ? "#fff" : "#000"
+              color: isDarkMode ? "#fff" : "#000",
             }}
           >
-            
             <InputLabel
               sx={{
                 background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                 color: isDarkMode ? "#fff" : "#000",
-                border:'none'
+                border: "none",
               }}
               id="demo-simple-select-label"
             >
@@ -161,29 +149,26 @@ const Search = ({
                 paddingBottom: "1px",
                 background: isDarkMode ? "rgb(43,56,67)" : "transparent",
                 color: isDarkMode ? "#fff" : "#000",
-                '& .MuiSelect-select': {
+                "& .MuiSelect-select": {
                   paddingRight: 4,
                   paddingLeft: 2,
                   paddingTop: 1,
                   paddingBottom: 1,
-               },
-               '& .MuiSelect-root': { padding: '0' }
+                },
+                "& .MuiSelect-root": { padding: "0" },
               }}
-          
-
-           
             >
               {subregion.map((region) => (
                 <MenuItem
                   sx={{
                     background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                     color: isDarkMode ? "#fff" : "#000",
-                    '&.Mui-selected': {
+                    "&.Mui-selected": {
                       background: isDarkMode ? "rgb(43,56,67)" : "#fff",
                       color: isDarkMode ? "#fff" : "#000",
-                      paddiingTop:0,
-                      paddingBottom:0
-                    }
+                      paddiingTop: 0,
+                      paddingBottom: 0,
+                    },
                   }}
                   key={region}
                   value={region}
@@ -220,7 +205,6 @@ const Search = ({
               Region
             </InputLabel>
             <Select
-            
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={filteredData}
@@ -231,16 +215,15 @@ const Search = ({
                 color: isDarkMode ? "#fff" : "#000",
               }}
               onChange={handleChange}
-           
             >
               <MenuItem
                 sx={{
                   background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                   color: isDarkMode ? "#fff" : "#000",
-                  '&.Mui-selected': {
+                  "&.Mui-selected": {
                     background: isDarkMode ? "rgb(43,56,67)" : "#fff",
                     color: isDarkMode ? "#fff" : "#000",
-                  }
+                  },
                 }}
                 value="Africa"
               >
@@ -250,10 +233,10 @@ const Search = ({
                 sx={{
                   background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                   color: isDarkMode ? "#fff" : "#000",
-                  '&.Mui-selected': {
+                  "&.Mui-selected": {
                     background: isDarkMode ? "rgb(43,56,67)" : "#fff",
                     color: isDarkMode ? "#fff" : "#000",
-                  }
+                  },
                 }}
                 value="America"
               >
@@ -263,10 +246,10 @@ const Search = ({
                 sx={{
                   background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                   color: isDarkMode ? "#fff" : "#000",
-                  '&.Mui-selected': {
+                  "&.Mui-selected": {
                     background: isDarkMode ? "rgb(43,56,67)" : "#fff",
                     color: isDarkMode ? "#fff" : "#000",
-                  }
+                  },
                 }}
                 value="Asia"
               >
@@ -276,10 +259,10 @@ const Search = ({
                 sx={{
                   background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                   color: isDarkMode ? "#fff" : "#000",
-                  '&.Mui-selected': {
+                  "&.Mui-selected": {
                     background: isDarkMode ? "rgb(43,56,67)" : "#fff",
                     color: isDarkMode ? "#fff" : "#000",
-                  }
+                  },
                 }}
                 value="Europe"
               >
@@ -289,10 +272,10 @@ const Search = ({
                 sx={{
                   background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
                   color: isDarkMode ? "#fff" : "#000",
-                  '&.Mui-selected': {
+                  "&.Mui-selected": {
                     background: isDarkMode ? "rgb(43,56,67)" : "#fff",
                     color: isDarkMode ? "#fff" : "#000",
-                  }
+                  },
                 }}
                 value="Oceania"
               >
