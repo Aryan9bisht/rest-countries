@@ -185,7 +185,6 @@ function Countries() {
   return (
     <div
       style={{
-        height: "100vh",
         background: isDarkMode ? "rgb(33, 45, 55)" : "#fff",
         color: isDarkMode ? "#fff" : "#000",
       }}

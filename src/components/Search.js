@@ -39,7 +39,7 @@ const Search = ({
     handleRegionChange(event);
     filterRegional(event);
   };
-  const [selectedValue, setSelectedValue] = useState(" ");
+  const [selectedValue, setSelectedValue] = useState(' ');
 
   const handling = (event) => {
     valSub(event);
@@ -138,6 +138,7 @@ const Search = ({
               Sub-region
             </InputLabel>
             <Select
+        style={{ paddingTop: '0px' }} 
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={selectedValue}
@@ -149,14 +150,10 @@ const Search = ({
                 paddingBottom: "1px",
                 background: isDarkMode ? "rgb(43,56,67)" : "transparent",
                 color: isDarkMode ? "#fff" : "#000",
-                "& .MuiSelect-select": {
-                  paddingRight: 4,
-                  paddingLeft: 2,
-                  paddingTop: 1,
-                  paddingBottom: 1,
-                },
-                "& .MuiSelect-root": { padding: "0" },
+               
+                "& .MuiSelect-root": { paddingTop: "0" },
               }}
+              MenuProps={{ MenuListProps: { disablePadding: true } }}
             >
               {subregion.map((region) => (
                 <MenuItem
@@ -215,6 +212,7 @@ const Search = ({
                 color: isDarkMode ? "#fff" : "#000",
               }}
               onChange={handleChange}
+              MenuProps={{ MenuListProps: { disablePadding: true } }}
             >
               <MenuItem
                 sx={{
