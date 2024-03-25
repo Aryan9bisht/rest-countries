@@ -1,3 +1,4 @@
+import { Box, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Search from "./Search";
@@ -7,6 +8,12 @@ import Error from "./Error";
 import NoResults from "./NoResults";
 import { useDarkMode } from "./DarkModeContext";
 import {Link} from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -94,23 +101,33 @@ const [subRegion,setSubRegion]= useState([])
     
   };
   
+  const filterRegional = (updatedRegion) => {
+    try {
+      const filteredCountries = countries.filter((country) => country.region.toLowerCase().includes(updatedRegion.toLowerCase()));
+      const uniqueSubregions = [...new Set(filteredCountries.map(country => country.subregion))];
+      setSubRegion(uniqueSubregions);
+    } catch (error) {
+      console.log('Error in filtering regions:', error);
+    }
+  };
+  
   const handleRegionChange = (e) => {
     try {
       const regionValue = e.target.value;
-    setRegionApplied(regionValue !== "");
-    setFilteredData(regionValue === "" ? "" : regionValue);
-    const inputVal = regionValue.toLowerCase();
-    setEntered("");
-    setSearched(false);
-    const filteredCountries = countries.filter((country) => country.region.toLowerCase().includes(inputVal));
-    setRegion(filteredCountries);
-    setOriginal(filteredCountries);
+      setRegionApplied(regionValue !== "");
+      setFilteredData(regionValue === "" ? "" : regionValue);
+      const inputVal = regionValue.toLowerCase();
+      setEntered("");
+      setSearched(false);
+      const filteredCountries = countries.filter((country) => country.region.toLowerCase().includes(inputVal));
+      setRegion(filteredCountries);
+      setOriginal(filteredCountries);
+      filterRegional(regionValue); // Call filterRegional with the updated region value
     } catch (error) {
-      console.log('error in handling region change',error);
+      console.log('Error in handling region change:', error);
     }
-    
-    
   };
+  
 const arrangeByRegion =()=>{
   try {
     if (regionApplied) {
@@ -143,17 +160,6 @@ const arrangeByRegion =()=>{
 
 }
 
-const filterRegional = () => {
-try {
-  
-  const uniqueSubregions = [...new Set(regionFilter.map(country => country.subregion))];
-
-  console.log(uniqueSubregions);
-  setSubRegion(uniqueSubregions);
-} catch (error) {
-  console.log('error in filtering regions',error);
-}
-};
 const handleSubRegionChange = (e) => {
   try {
     const inputVal = e.target.value.toLowerCase(); 
@@ -189,11 +195,37 @@ const handleSubRegionChange = (e) => {
       />
       {load && <Loader />}
       {error && <Error />}
-      <div className="container">
-        {searched && regionApplied ? (
-          filtered.length > 0 ? (
-            filtered.map((country) => <Link
-            key={country.name.common}
+     
+
+<Box sx={{ width: '90%', margin: 'auto' }}>
+  <Grid container spacing={10} justifyContent="center">
+    {searched && regionApplied ? (
+      filtered.length > 0 ? (
+        filtered.map((country) => (
+          <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
+            <Link
+              to={`/country/${country.name.common}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Country
+                key={country.name.common}
+                country={country}
+                isDarkMode={isDarkMode}
+                regionApplied={regionApplied}
+                filterRegional={filterRegional}
+              />
+            </Link>
+          </Grid>
+        ))
+      ) : (
+        <Grid item xs={12}>
+          <NoResults isDarkMode={isDarkMode} />
+        </Grid>
+      )
+    ) : !searched && regionApplied ? (
+      regionFilter.map((country) => (
+        <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
+          <Link
             to={`/country/${country.name.common}`}
             style={{ textDecoration: 'none' }}
           >
@@ -205,28 +237,35 @@ const handleSubRegionChange = (e) => {
               filterRegional={filterRegional}
             />
           </Link>
-          )
-          ) : (
-            <NoResults isDarkMode={isDarkMode} />
-          )
-        ) : !searched && regionApplied ? (
-          regionFilter.map((country) => <Link
-          key={country.name.common}
-          to={`/country/${country.name.common}`}
-          style={{ textDecoration: 'none' }}
-        >
-          <Country
-            key={country.name.common}
-            country={country}
-            isDarkMode={isDarkMode}
-            regionApplied={regionApplied}
-            filterRegional={filterRegional}
-          />
-        </Link>)
-        ) : searched && !regionApplied ? (
-          filtered.length > 0 ? (
-            filtered.map((country) => <Link
-            key={country.name.common}
+        </Grid>
+      ))
+    ) : searched && !regionApplied ? (
+      filtered.length > 0 ? (
+        filtered.map((country) => (
+          <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
+            <Link
+              to={`/country/${country.name.common}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Country
+                key={country.name.common}
+                country={country}
+                isDarkMode={isDarkMode}
+                regionApplied={regionApplied}
+                filterRegional={filterRegional}
+              />
+            </Link>
+          </Grid>
+        ))
+      ) : (
+        <Grid item xs={12}>
+          <NoResults isDarkMode={isDarkMode} />
+        </Grid>
+      )
+    ) : (
+      countries.map((country) => (
+        <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
+          <Link
             to={`/country/${country.name.common}`}
             style={{ textDecoration: 'none' }}
           >
@@ -237,26 +276,12 @@ const handleSubRegionChange = (e) => {
               regionApplied={regionApplied}
               filterRegional={filterRegional}
             />
-          </Link>)
-          ) : (
-            <NoResults isDarkMode={isDarkMode} />
-          )
-        ) : (
-          countries.map((country) => <Link
-          key={country.name.common}
-          to={`/country/${country.name.common}`}
-          style={{ textDecoration: 'none' }}
-        >
-          <Country
-            key={country.name.common}
-            country={country}
-            isDarkMode={isDarkMode}
-            regionApplied={regionApplied}
-            filterRegional={filterRegional}
-          />
-        </Link>)
-        )}
-      </div>
+          </Link>
+        </Grid>
+      ))
+    )}
+  </Grid>
+</Box>
     </div>
   );
 }

@@ -2,8 +2,6 @@
   text-align: center;
 }
 
-/* Define more styles as needed */
-
 body, html {
   margin: 0;
   padding: 0;
@@ -52,6 +50,7 @@ body{
   justify-content: space-between;
   height: 10vh;
 }
+/**
 input[type="text" i] {
   margin-top: 42px;
     margin-left: 71px;
@@ -63,6 +62,8 @@ input[type="text" i] {
     outline: none;
     border: none;
 }
+*/
+/*
 select{
   margin-top: 42px;
   margin-right: 71px;
@@ -74,6 +75,7 @@ select{
 option{
   background-color: transparent;
 }
+*/
 .container {
   width: 100%; /* Set container width to viewport width */
   height: auto; /* Allow container height to adjust based on content */
@@ -168,7 +170,7 @@ option{
   margin-top: 5px;
   font-size: small;
 }
-button{
+/**button{
   margin-top: 45px;
   width: 10vw;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -176,7 +178,7 @@ button{
   outline: none;
   border: none;
 
-}
+}*/
 .sub{
 
   font-size: small;
